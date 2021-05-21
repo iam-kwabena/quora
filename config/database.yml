@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: quora_development
+
+test:
+  <<: *default
+  database: quora_test
+
+production:
+  <<: *default
+  database: quora_production
+  username: quora
+  password: <%= ENV['QUORA_DATABASE_PASSWORD'] %>
